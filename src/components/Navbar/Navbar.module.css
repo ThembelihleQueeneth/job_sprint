@@ -1,0 +1,39 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.container{
+    background-color: #333;
+    color:#fff;
+    max-width: 100%;
+    height: 6vh;
+}
+.container h1{
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 100;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: #333 1px solid;
+    height: 10vh;
+}
+nav h2{
+    font-size: 15px;
+    font-weight: 100;
+}
+nav button{
+    border:none;
+    width: 200px;
+    height: 40px;
+    font-size: 15px;
+    letter-spacing: 1px;
+
+
+  
+
+}
