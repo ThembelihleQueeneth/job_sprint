@@ -1,0 +1,155 @@
+.content{
+    display: flex;
+    height: 9vh;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+.textContainer{
+    line-height: 30px;
+}
+input{
+    border: none;
+    outline: none;
+    font-size: 20px;
+    border-bottom: 2px solid #3498db;
+    width: 350px;
+    margin-top: 30px;
+    margin-right: 20px;
+}
+input:hover{
+    outline:none;
+}
+.searchButton img{
+   margin-left: -100px;
+   border: none;
+   width: auto;
+   height: 20px;
+   background-color: #fff;
+   opacity: 0.5;
+    
+
+}
+.demo-heading {
+  font-size: 22px;
+  color: #2c3e50;
+  text-align: center;
+  margin: 30px 0 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #3498db;
+  display: inline-block;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+.demo{
+    display: grid;
+    
+}
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-top: 20px;
+}
+.demo-card {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 320px;
+}
+.demo-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.company-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  background: #f8f9fa;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+.job-title {
+  font-size: 18px;
+  color: #2c3e50;
+  margin-bottom: 12px;
+}
+
+.company-name, .status {
+  display: block;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+/* Status colors */
+.status-applied {
+  color: #3498db;
+}
+
+.status-interview {
+  color: #f39c12;
+}
+
+.status-offer {
+  color: #27ae60;
+}
+
+.status-rejected {
+  color: #e74c3c;
+}
+
+.detailsBtn {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 24px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: auto;
+  transition: background 0.3s ease;
+  width: 180px;
+}
+
+.detailsBtn:hover {
+  background: #2980b9;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .demo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .textContainer {
+    padding-right: 0;
+    margin-bottom: 20px;
+  }
+  
+  .searchContainer {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .demo-grid {
+    grid-template-columns: 1fr;
+  }
+}

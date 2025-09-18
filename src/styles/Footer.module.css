@@ -1,0 +1,26 @@
+footer{
+    width: 100%;
+    height: auto;
+    background-color: #333;
+    color: #fff;
+    bottom: 0;
+}
+.icons, p{
+    display: flex;
+    gap: 10px;
+    text-align: center;
+    justify-content: center;
+    margin-top: 10px;
+
+}
+.icons img{
+    width: 30px;
+    height: auto;
+    margin-top: 10px;
+    cursor: pointer;
+
+}
+.icons img:hover{
+    background-color: #fff;
+}
+

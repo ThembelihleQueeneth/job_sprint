@@ -1,5 +1,4 @@
-import React from 'react'
-import styles from './Navbar.module.css'
+import styles from  '../../styles/Navbar.module.css'
 
 export const Navbar = () => {
   return (
@@ -9,14 +8,18 @@ export const Navbar = () => {
     </div>
     <nav>
         <div>
-            <h2>Create an Account to browse jobs</h2>
+            <h2>Create an Account to start tracking your job applications</h2>
         </div>
         <div>
             <button>Login/Create profile</button>
         </div>
         
-        
     </nav>
+   
+       
+      
+        
+   
     </>
   )
 }
