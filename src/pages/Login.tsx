@@ -7,9 +7,9 @@ export const Login = () => {
     <div className={styles['loginContainer']}>
         <h1 className={styles['login-heading']}>Log in</h1>
         <input className={styles['email-input']} type="text" placeholder='Emain*' required/>
-        <input className={styles['pass-input']} type="password" placeholder='Password*' required />
-        <p className={styles.account}>Don't have an account yet? </p><Link to='/register' className={styles['register-link']}>Register</Link>
-
+        <input className={styles['pass-input']} type="password" placeholder='Password*' required /> <br />
+        <button className={styles['loginBtn']}>Login</button>
+        <p className={styles.a}>Don't have an account yet? </p><Link to='/register' className={styles['register-link']}>Register</Link>
     </div>
   )
 }

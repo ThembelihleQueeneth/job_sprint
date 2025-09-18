@@ -1,6 +1,6 @@
 .registerContainer{
     width: 500px;
-    height: 500px;
+    height: 600px;
     border: 1px solid #333;
     margin: auto;
     justify-content: center;
@@ -33,4 +33,23 @@
 }
 .account{
     margin-top: 50px;
+}
+.registerBtn {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 24px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background 0.3s ease;
+  width: 200px;
+  height: 40px;
+  margin-left: 135px;
+  margin-top: 30px;
+}
+
+.registerBtn:hover {
+  background: #2980b9;
 }
