@@ -1,34 +1,16 @@
-import React from 'react';
+import React from 'react'
 
 type TextProps = {
-  variant: 'h1' | 'h2' | 'h3' | 'body' | 'caption';
-  children: React.ReactNode;
-  style?: React.CSSProperties;
-  className?: string;
-};
+  varient?: 'h1' | 'h2' | 'p' | 'span',
+  children: React.ReactNode,
+  style?: React.CSSProperties
+}
 
-export const Text: React.FC<TextProps> = ({ 
-  variant, 
-  children, 
-  style, 
-  className 
-}) => {
+export const Text: React.FC<TextProps> = ({ varient, children, style }) => {
+  if (varient === 'h1') return <h1 style={style}>{children}</h1>
+  if (varient === 'h2') return <h2 style={style}>{children}</h2>
+  if (varient === 'p') return <p style={style}>{children}</p>
+  if (varient === 'span') return <span style={style}>{children}</span>
 
-  const Component = ({
-    'h1': 'h1',
-    'h2': 'h2', 
-    'h3': 'h3',
-    'body': 'p',
-    'caption': 'span'
-  })[variant] as keyof JSX.IntrinsicElements;
-
-  return (
-    <Component 
-      className={className} 
-      style={style}
-    >
-      {children}
-    </Component>
-  );
-};
-
+  return <div style={style}>{children}</div>
+}
