@@ -1,4 +1,5 @@
 import styles from  '../../styles/Navbar.module.css'
+import {Link} from "react-router-dom"
 
 export const Navbar = () => {
   return (
@@ -11,7 +12,10 @@ export const Navbar = () => {
             <h2>Create an Account to start tracking your job applications</h2>
         </div>
         <div>
+          <Link to="/login">
             <button>Login/Create profile</button>
+          </Link>
+            
         </div>
         
     </nav>
