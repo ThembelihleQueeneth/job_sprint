@@ -28,14 +28,14 @@ export const Landing = () => {
       id: 2,
       title: 'Frontend Developer',
       company: 'Google',
-      status: 'Interview',
+      status: 'Interviewed',
       logo: 'https://cdn-icons-png.flaticon.com/512/281/281764.png',
     },
     {
       id: 3,
       title: 'UX Designer',
       company: 'Microsoft',
-      status: 'Offer',
+      status: 'Applied',
       logo: 'https://cdn-icons-png.flaticon.com/512/732/732221.png',
     },
     {
@@ -56,7 +56,7 @@ export const Landing = () => {
       id: 6,
       title: 'DevOps Engineer',
       company: 'Netflix',
-      status: 'Interview',
+      status: 'Interviewed',
       logo: 'https://cdn-icons-png.flaticon.com/512/732/732228.png',
     },
     {
@@ -70,14 +70,14 @@ export const Landing = () => {
       id: 8,
       title: 'Mobile Developer',
       company: 'Uber',
-      status: 'Offer',
+      status: 'Rejected',
       logo: 'https://cdn-icons-png.flaticon.com/512/5969/5969282.png',
     },
     {
       id: 9,
       title: 'QA Engineer',
       company: 'Airbnb',
-      status: 'Interview',
+      status: 'Interviewed',
       logo: 'https://cdn-icons-png.flaticon.com/512/6124/6124998.png',
     },
   ];
@@ -127,9 +127,12 @@ export const Landing = () => {
             <span className={styles["company-name"]}>
               <b>Company:</b> {app.company}
             </span>
-            <span className={`status status-${app.status.toLowerCase()}`}>
-              <b>Status:</b> {app.status}
-            </span>
+           <span
+  className={`${styles.status} ${styles[`status-${app.status.toLowerCase()}`]}`}
+>
+  <b>Status:</b> {app.status}
+</span>
+
              <div className={styles["card-actions"]}>
             <button  aria-label="Name" type='submit' onClick={handleDemoBtn} className={styles.iconBtn} id={styles.edit}>
               <FaEdit />
