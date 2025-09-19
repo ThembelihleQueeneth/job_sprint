@@ -14,6 +14,8 @@ type Job = {
   status: string;
   logo: string;
   userEmail: string; 
+  date: string;
+  description: string
 };
 
 export const Home = () => {
@@ -137,13 +139,14 @@ const closeModal = () => {
     <div className={styles.modal}>
       <h2>{selectedJob.title}</h2>
       <img src={selectedJob.logo} alt="Company Logo" className={styles["company-logo"]} />
+      <p><b>Job ID:</b> {selectedJob.id}</p>
       <p><b>Company:</b> {selectedJob.company}</p>
       <p><b>Job Title</b>{selectedJob.title}</p>
       <p><b>Status:</b> {selectedJob.status}</p>
-      <p><b>Job ID:</b> {selectedJob.id}</p>
-      <p><b>Added by:</b> {selectedJob.userEmail}</p>
       <p><b>Date Applied:</b>{selectedJob.date}</p>
-      <p><b>Added by:</b> {selectedJob.description}</p>
+      <p><b>Description:</b> {selectedJob.description}</p>
+      <p><b>Added by:</b> {selectedJob.userEmail}</p>
+      
 
       <div className={styles.modalActions}>
         <button onClick={closeModal} className={styles.closeBtn}><FaWindowClose/></button>
