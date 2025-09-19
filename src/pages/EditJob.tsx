@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import styles from '../styles/AddJob.module.css';
+import styles from '../styles/EditJob.module.css';
 import { useNavigate, useParams } from 'react-router-dom';
+import { BiBorderRadius } from 'react-icons/bi';
 
 type Job = {
   id: number;
@@ -9,12 +10,13 @@ type Job = {
   status: string;
   date?: string;
   description?: string;
-  logo: string; // base64
+  logo: string; 
   userEmail: string;
 };
 
 export const EditJob = () => {
-  const { id } = useParams<{ id: string }>();
+  
+  const { jobId } = useParams<{ jobId: string }>();
   const navigate = useNavigate();
 
   const [title, setTitle] = useState('');
@@ -26,7 +28,8 @@ export const EditJob = () => {
   
   useEffect(() => {
     const allJobs: Job[] = JSON.parse(localStorage.getItem('jobs') || '[]');
-    const jobToEdit = allJobs.find(job => job.id === Number(id));
+    const jobToEdit = allJobs.find(job => job.id === Number(jobId));
+
     if (!jobToEdit) {
       alert('Job not found');
       navigate('/home');
@@ -39,9 +42,9 @@ export const EditJob = () => {
     setDate(jobToEdit.date || '');
     setDescription(jobToEdit.description || '');
     setLogo(jobToEdit.logo);
-  }, [id, navigate]);
+  }, [jobId, navigate]);
 
-  // Convert uploaded image to base64
+  
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -57,7 +60,7 @@ export const EditJob = () => {
     e.preventDefault();
 
     const allJobs: Job[] = JSON.parse(localStorage.getItem('jobs') || '[]');
-    const jobIndex = allJobs.findIndex(job => job.id === Number(id));
+    const jobIndex = allJobs.findIndex(job => job.id === Number(jobId));
 
     if (jobIndex === -1) {
       alert('Job not found');
@@ -83,14 +86,16 @@ export const EditJob = () => {
     <form className={styles['JobContainer']} onSubmit={handleEditJob}>
       <h1 className={styles['add-job-heading']}>Edit Job</h1>
 
+      {logo && <img src={logo} alt="Company Logo" className={styles.logo} />}
+
       <input 
         className={styles['job-input']} 
         type="file" 
         accept="image/*" 
-        onChange={handleImageChange} placeholder='file'
+        onChange={handleImageChange} 
       />
 
-      {logo && <img src={logo} alt="Company Logo" style={{ width: 80, margin: '10px 0' }} />}
+      
 
       <input  
         className={styles['job-input']} 
@@ -118,8 +123,6 @@ export const EditJob = () => {
         onChange={(e) => setStatus(e.target.value)}
         required
         aria-label='State'
-       
-        
       >
         <option value="">Select status...</option>
         <option value="Applied">Applied</option>
@@ -132,7 +135,6 @@ export const EditJob = () => {
         type="date" 
         value={date}
         onChange={(e) => setDate(e.target.value)}
-        placeholder='date'
       />
       
       <input 
@@ -144,7 +146,7 @@ export const EditJob = () => {
       />
 
       <button className={styles['AddNewJobBtn']} type="submit">
-        Edit Job
+        Save Changes
       </button>
     </form>
   );

@@ -1,12 +1,19 @@
 .JobContainer{
     width: 600px;
-    height: 700px;
+    height: 800px;
     border: 1px solid #333;
     margin: auto;
     justify-content: center;
     align-items: center;
     margin-top: 60px;
     
+}
+.logo{
+  width: 150px;
+  height: auto;
+   margin-left: 35%;
+   border: 3px solid #3498db;
+   border-radius: 100px;
 }
 .add-job-heading{
     margin-bottom: 50px;
