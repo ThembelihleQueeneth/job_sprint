@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { LoginNavBar } from '../components/Navbar/LoginNavBar';
 import styles from '../styles/Landing.module.css';
 import searchIcon from '../assets/search.svg';
-import { FaEdit, FaTrash } from "react-icons/fa";
+import { FaEdit, FaTrash, FaEye} from "react-icons/fa";
 
 
 import { Footer } from '../components/Footer/Footer';
@@ -137,6 +137,7 @@ export const Landing = () => {
             <button  aria-label="Name" type='submit' onClick={handleDemoBtn} className={styles.iconBtn} id={styles.delete}>
               <FaTrash />
           </button>
+          <button aria-label="Name" type='submit' onClick={handleDemoBtn} className={styles.iconBtn} id={styles.view}><FaEye /></button>
             </div>
           </div>
         ))}

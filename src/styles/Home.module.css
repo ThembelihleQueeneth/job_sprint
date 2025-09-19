@@ -202,18 +202,18 @@ input:hover{
   margin-top: 6px;
 }
 
-/* Specific status colors */
+
 .status-applied {
-  background-color: #f1c40f; /* yellow */
+  background-color: #f1c40f; 
   color: #000;
 }
 
 .status-interviewed {
-  background-color: #27ae60; /* green */
+  background-color: #27ae60; 
 }
 
 .status-rejected {
-  background-color: #e74c3c; /* red */
+  background-color: #e74c3c; 
 }
 .modalBackdrop {
   position: fixed;
