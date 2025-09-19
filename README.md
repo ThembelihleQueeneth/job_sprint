@@ -31,8 +31,9 @@ Stay organized and never miss an opportunity with our job application tracker.
 ### Installing
 
 clone https://github.com/ThembelihleQueeneth/job_sprint.git
-cd job_sprint
-npm install 
+```cd job_sprint
+npm install
+``` 
 
 ### Executing program
 
