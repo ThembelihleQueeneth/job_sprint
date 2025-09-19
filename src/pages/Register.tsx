@@ -29,14 +29,14 @@ export const Register = () => {
   };
 
   return (
-    <div className={styles['registerContainer']}>
-      <h1 className={styles['register-heading']}>Register</h1>
-
+    
+<>
       
-      <form onSubmit={handleRegister}>
+      <form onSubmit={handleRegister} className={styles['registerContainer']}>
+        <h1 className={styles['register-heading']}>Register</h1>
         <input
           type="text"
-          className={styles.username}
+          className={styles['register-input']}
           placeholder="User name"
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -44,7 +44,7 @@ export const Register = () => {
         />
 
         <input
-          className={styles['email-input']}
+          className={styles['register-input']}
           type="email"
           placeholder="Email*"
           value={email}
@@ -53,25 +53,32 @@ export const Register = () => {
         />
 
         <input
-          className={styles['pass-input']}
+          className={styles['register-input']}
           type="password"
           placeholder="Password*"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
+        <input
+          className={styles['register-input']}
+          type="password"
+          placeholder="Confirm Password*"
+          required
+        />
 
         <button type="submit" className={styles['registerBtn']}>
           Register
         </button>
-      </form>
-
-      <p className={styles.account}>
+        <p className={styles.account}>
         Already have an account?{' '}
         <Link to="/login" className={styles['login-link']}>
           Login
         </Link>
       </p>
-    </div>
+      </form>
+
+      
+    </>
   );
 };

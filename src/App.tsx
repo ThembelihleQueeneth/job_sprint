@@ -3,7 +3,6 @@ import { Landing } from './pages/Landing'
 import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { Home } from './pages/Home'
-import { DetailsPage } from './pages/DetailsPage'
 import { AddJob } from './pages/AddJob'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
@@ -15,7 +14,7 @@ function App() {
         <Route path="/login" element={<Login />} />
          <Route path="/register" element={<Register />} />
          <Route path="/home" element= {<Home/>} />
-         <Route path="/details" element= {<DetailsPage/>} />
+        
          <Route path="/add" element= {<AddJob/>} />
       </Routes>
     </Router>

@@ -10,6 +10,7 @@ import searchIcon from '../assets/search.svg';
 // import fnb_logo from '../assets/FNB-Logo-New.png';
 import { Footer } from '../components/Footer/Footer';
 import {useNavigate} from 'react-router-dom'
+import { FaEdit, FaTrash } from "react-icons/fa";
 
 export const Home = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -139,7 +140,14 @@ export const Home = () => {
             <span className={`status status-${app.status.toLowerCase()}`}>
               <b>Status:</b> {app.status}
             </span>
-            <button className={styles["detailsBtn"]} onClick={handleDetailsBtn}>View Details</button>
+             <div className={styles["card-actions"]}>
+    <button onClick={handleDetailsBtn} className={styles.iconBtn} id={styles.edit}>
+      <FaEdit />
+    </button>
+    <button onClick={handleDetailsBtn} className={styles.iconBtn} id={styles.delete}>
+      <FaTrash />
+    </button>
+  </div>
           </div>
         ))}
       </div>
