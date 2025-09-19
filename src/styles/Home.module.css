@@ -150,8 +150,11 @@ input:hover{
     color: red;
     transition: transform 0.2s ease;
 }
+#view{
+    color: #3498db;;
+}
 
-#delete:hover , #edit:hover{
+#delete:hover , #edit:hover, #view:hover{
   animation: shake 0.4s ease-in-out;
 }
 
@@ -212,3 +215,49 @@ input:hover{
 .status-rejected {
   background-color: #e74c3c; /* red */
 }
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+.modal img {
+  max-width: 120px;
+  margin-bottom: 15px;
+}
+
+.modalActions {
+  margin-top: 20px;
+}
+
+.closeBtn {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.closeBtn:hover {
+  background: #c0392b;
+}
+

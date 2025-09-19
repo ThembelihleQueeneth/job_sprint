@@ -5,7 +5,7 @@ import styles from '../styles/Home.module.css'
 import searchIcon from '../assets/search.svg';
 import { Footer } from '../components/Footer/Footer';
 import { useNavigate } from 'react-router-dom';
-import { FaEdit, FaTrash } from "react-icons/fa";
+import { FaEdit, FaTrash, FaEye,  FaWindowClose } from "react-icons/fa";
 
 type Job = {
   id: number;
@@ -49,6 +49,23 @@ export const Home = () => {
   setJobs(updatedJobs.filter(job => job.userEmail === currentUser.email));
 };
 
+const [selectedJob, setSelectedJob] = useState<Job | null>(null);
+const [showModal, setShowModal] = useState(false);
+
+const handleViewBtn = (jobId: number) => {
+  const job = jobs.find((j) => j.id === jobId);
+  if (job) {
+    setSelectedJob(job);
+    setShowModal(true);
+  }
+};
+
+const closeModal = () => {
+  setShowModal(false);
+  setSelectedJob(null);
+};
+
+
 
   const filteredJobs = jobs.filter(
     (job) =>
@@ -84,7 +101,7 @@ export const Home = () => {
       </div>
 
       <button className={styles.addBtn} onClick={handleAddBtn}>Add New Job</button>
-      
+
 
       <h4 className={styles['demo-heading']}>Recent Applications</h4>
 
@@ -109,11 +126,32 @@ export const Home = () => {
                 <button onClick={() => handleDeleteBtn(job.id)} className={styles.iconBtn} id={styles.delete}>
                   <FaTrash />
                 </button>
+                <button onClick={() => handleViewBtn(job.id)} className={styles.iconBtn} id={styles.view}><FaEye /></button>
               </div>
             </div>
           ))
         )}
       </div>
+      {showModal && selectedJob && (
+  <div className={styles.modalBackdrop}>
+    <div className={styles.modal}>
+      <h2>{selectedJob.title}</h2>
+      <img src={selectedJob.logo} alt="Company Logo" className={styles["company-logo"]} />
+      <p><b>Company:</b> {selectedJob.company}</p>
+      <p><b>Job Title</b>{selectedJob.title}</p>
+      <p><b>Status:</b> {selectedJob.status}</p>
+      <p><b>Job ID:</b> {selectedJob.id}</p>
+      <p><b>Added by:</b> {selectedJob.userEmail}</p>
+      <p><b>Date Applied:</b>{selectedJob.date}</p>
+      <p><b>Added by:</b> {selectedJob.description}</p>
+
+      <div className={styles.modalActions}>
+        <button onClick={closeModal} className={styles.closeBtn}><FaWindowClose/></button>
+      </div>
+    </div>
+  </div>
+)}
+
 
       <Footer />
     </>
