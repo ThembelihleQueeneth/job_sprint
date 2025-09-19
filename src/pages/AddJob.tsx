@@ -74,6 +74,7 @@ export const AddJob = () => {
         accept="image/*" 
         onChange={handleImageChange} 
         required 
+        aria-label="State"
       />
 
       <input  
@@ -100,6 +101,7 @@ export const AddJob = () => {
         className={styles.status}
         value={status}
         onChange={(e) => setStatus(e.target.value)}
+        aria-label="State"
       >
         <option value="Applied">Applied</option>
         <option value="Rejected">Rejected</option>
@@ -111,6 +113,7 @@ export const AddJob = () => {
         type="date" 
         value={date}
         onChange={(e) => setDate(e.target.value)}
+        aria-label="State"
       />
       
       <input 

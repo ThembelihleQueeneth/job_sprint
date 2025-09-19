@@ -12,7 +12,7 @@ export const LoginNavBar = () => {
         </div>
         <div>
           <Link to="/login">
-            <button className={styles.loginBtn}>Login/Create profile</button>
+            <button className={styles.login}>Login/Create profile</button>
           </Link>
             
         </div>

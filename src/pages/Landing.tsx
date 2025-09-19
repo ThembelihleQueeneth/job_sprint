@@ -131,10 +131,10 @@ export const Landing = () => {
               <b>Status:</b> {app.status}
             </span>
              <div className={styles["card-actions"]}>
-            <button onClick={handleDemoBtn} className={styles.iconBtn} id={styles.edit}>
+            <button  aria-label="Name" type='submit' onClick={handleDemoBtn} className={styles.iconBtn} id={styles.edit}>
               <FaEdit />
             </button>
-            <button onClick={handleDemoBtn} className={styles.iconBtn} id={styles.delete}>
+            <button  aria-label="Name" type='submit' onClick={handleDemoBtn} className={styles.iconBtn} id={styles.delete}>
               <FaTrash />
           </button>
             </div>

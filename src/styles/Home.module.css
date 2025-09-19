@@ -42,12 +42,7 @@ input:hover{
   margin-left: 50%;
   transform: translateX(-50%);
 }
-.welcome-msg {
-    color: #2c3e50;
-    border-bottom: 2px solid #3498db;
-    margin-right: 1000px;
 
-}
 
 .demo{
     display: grid;
@@ -92,7 +87,7 @@ input:hover{
   margin-bottom: 12px;
 }
 
-.company-name, .status {
+.company-name {
   display: block;
   margin-bottom: 10px;
   color: #555;
@@ -194,4 +189,26 @@ input:hover{
   .demo-grid {
     grid-template-columns: 1fr;
   }
+}
+.status {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-weight: bold;
+  color: white;
+  margin-top: 6px;
+}
+
+/* Specific status colors */
+.status-applied {
+  background-color: #f1c40f; /* yellow */
+  color: #000;
+}
+
+.status-interviewed {
+  background-color: #27ae60; /* green */
+}
+
+.status-rejected {
+  background-color: #e74c3c; /* red */
 }

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Navbar } from '../components/Navbar/Navbar';
+import { HomeNavBar } from '../components/Navbar/HomeNavBar';
 import styles from '../styles/Home.module.css'
 import searchIcon from '../assets/search.svg';
 import { Footer } from '../components/Footer/Footer';
@@ -12,7 +13,7 @@ type Job = {
   company: string;
   status: string;
   logo: string;
-  userEmail: string; // link job to user
+  userEmail: string; 
 };
 
 export const Home = () => {
@@ -20,11 +21,11 @@ export const Home = () => {
   const [jobs, setJobs] = useState<Job[]>([]);
   const navigate = useNavigate();
 
-  // Get current logged-in user from localStorage (set on login)
+ 
   const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
   
   useEffect(() => {
-    // fetch jobs for current user
+   
     const allJobs: Job[] = JSON.parse(localStorage.getItem('jobs') || '[]');
     const userJobs = allJobs.filter(job => job.userEmail === currentUser.email);
     setJobs(userJobs);
@@ -39,12 +40,15 @@ export const Home = () => {
   };
 
   const handleDeleteBtn = (jobId: number) => {
-    const allJobs: Job[] = JSON.parse(localStorage.getItem('jobs') || '[]');
-    const updatedJobs = allJobs.filter(job => job.id !== jobId);
-    localStorage.setItem('jobs', JSON.stringify(updatedJobs));
-    // refresh list
-    setJobs(updatedJobs.filter(job => job.userEmail === currentUser.email));
-  };
+  const confirmed = window.confirm('Are you sure you want to delete this job?');
+  if (!confirmed) return;
+
+  const allJobs: Job[] = JSON.parse(localStorage.getItem('jobs') || '[]');
+  const updatedJobs = allJobs.filter(job => job.id !== jobId);
+  localStorage.setItem('jobs', JSON.stringify(updatedJobs));
+  setJobs(updatedJobs.filter(job => job.userEmail === currentUser.email));
+};
+
 
   const filteredJobs = jobs.filter(
     (job) =>
@@ -55,10 +59,13 @@ export const Home = () => {
   return (
     <>
       <Navbar />
+      <HomeNavBar name={currentUser.name || 'User'} />
+
+
 
       <div className={styles.content}>
         <div className={styles.textContainer}>
-          <h3 className={styles['welcome-msg']}>Welcome back {currentUser.name}</h3>
+          
           <h2>Keep Track of Your Job Applications</h2>
           <p>Stay organized and never miss an opportunity with our job application tracker.</p>
         </div>
@@ -77,6 +84,7 @@ export const Home = () => {
       </div>
 
       <button className={styles.addBtn} onClick={handleAddBtn}>Add New Job</button>
+      
 
       <h4 className={styles['demo-heading']}>Recent Applications</h4>
 
@@ -89,7 +97,10 @@ export const Home = () => {
               <img src={job.logo} alt="Company Logo" className={styles["company-logo"]} />
               <h3 className={styles["job-title"]}><b>Title:</b> {job.title}</h3>
               <span className={styles["company-name"]}><b>Company:</b> {job.company}</span>
-              <span className={`status status-${job.status.toLowerCase()}`}><b>Status:</b> {job.status}</span>
+             <span
+                className={`${styles.status} ${styles[`status-${job.status.toLowerCase()}`]}`}> <b>Status:</b> {job.status}
+              </span>
+
               
               <div className={styles["card-actions"]}>
                 <button onClick={() => handleEditBtn(job.id)} className={styles.iconBtn} id={styles.edit}>

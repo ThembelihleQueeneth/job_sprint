@@ -18,21 +18,25 @@ export const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
-    const users: User[] = JSON.parse(localStorage.getItem('users') || '[]');
+const handleLogin = () => {
+  const users: User[] = JSON.parse(localStorage.getItem('users') || '[]');
 
-    // find a matching user
-    const user = users.find(
-      (u) => u.email === email && u.password === password
-    );
+  
+  const user = users.find(
+    (u) => u.email === email && u.password === password
+  );
 
-    if (user) {
-      alert(`Welcome back, ${user.name}!`);
-      navigate('/home');
-    } else {
-      alert('Invalid email or password');
-    }
-  };
+  if (user) {
+    
+    localStorage.setItem('currentUser', JSON.stringify(user));
+
+    alert(`Welcome back, ${user.name}!`);
+    navigate('/home');
+  } else {
+    alert('Invalid email or password');
+  }
+};
+
   return (
     <div className={styles['loginContainer']}>
         <h1 className={styles['login-heading']}>Log in</h1>
