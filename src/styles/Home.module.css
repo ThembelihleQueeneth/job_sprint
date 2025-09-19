@@ -31,7 +31,7 @@ input:hover{
     
 
 }
-.demo-heading {
+.demo-heading{
   font-size: 22px;
   color: #2c3e50;
   text-align: center;
@@ -41,6 +41,12 @@ input:hover{
   display: inline-block;
   margin-left: 50%;
   transform: translateX(-50%);
+}
+.welcome-msg {
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    margin-right: 1000px;
+
 }
 
 .demo{
@@ -109,7 +115,7 @@ input:hover{
   color: #e74c3c;
 }
 
-.detailsBtn, .addBtn {
+.addBtn {
   background: #3498db;
   color: white;
   border: none;
@@ -123,7 +129,7 @@ input:hover{
   width: 180px;
 }
 
-.detailsBtn:hover {
+.addBtn:hover {
   background: #2980b9;
 }
 .iconBtn {

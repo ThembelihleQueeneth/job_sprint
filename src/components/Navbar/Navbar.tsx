@@ -1,5 +1,5 @@
 import styles from  '../../styles/Navbar.module.css'
-import {Link} from "react-router-dom"
+
 
 export const Navbar = () => {
   return (
@@ -7,7 +7,7 @@ export const Navbar = () => {
     <div className={styles.container}>
         <h1>Job Sprint</h1>
     </div>
-    <nav>
+    {/* <nav>
         <div>
             <h2>Create an Account to start tracking your job applications</h2>
         </div>
@@ -18,7 +18,7 @@ export const Navbar = () => {
             
         </div>
         
-    </nav>
+    </nav> */}
    
        
       

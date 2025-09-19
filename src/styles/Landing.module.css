@@ -153,3 +153,55 @@ input:hover{
     grid-template-columns: 1fr;
   }
 }
+.addBtn {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 24px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: auto;
+  transition: background 0.3s ease;
+  width: 180px;
+}
+
+.addBtn:hover {
+  background: #2980b9;
+}
+.iconBtn {
+  background: none;
+  border: 2px solid #333;
+  border: none;
+  cursor: pointer;
+  margin: 0 5px;
+  font-size: 2rem; 
+  transition: color 0.2s ease;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+#edit{
+    color: #27ae60;
+    transition: transform 0.2s ease;
+}
+#delete{
+    color: red;
+    transition: transform 0.2s ease;
+}
+
+#delete:hover , #edit:hover{
+  animation: shake 0.4s ease-in-out;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  50% { transform: translateX(3px); }
+  75% { transform: translateX(-3px); }
+  100% { transform: translateX(0); }
+}

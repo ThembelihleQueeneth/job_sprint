@@ -1,25 +1,87 @@
-// import React from 'react'
-import styles from '../styles/AddJob.module.css'
+import React, { useState } from 'react';
+import styles from '../styles/AddJob.module.css';
+import { useNavigate } from 'react-router-dom';
+
+type Job = {
+  id: number;
+  title: string;
+  company: string;
+  status: string;
+  date?: string;
+  description?: string;
+  logo: string; 
+  userEmail: string; 
+};
 
 export const AddJob = () => {
+  const navigate = useNavigate();
+  const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+
+  const [title, setTitle] = useState('');
+  const [company, setCompany] = useState('');
+  const [status, setStatus] = useState('Applied');
+  const [date, setDate] = useState('');
+  const [description, setDescription] = useState('');
+  const [logo, setLogo] = useState('');
+
+  
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setLogo(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleAddJob = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!logo) {
+      alert('Please upload a company logo');
+      return;
+    }
+
+    const allJobs: Job[] = JSON.parse(localStorage.getItem('jobs') || '[]');
+
+    const newJob: Job = {
+      id: Date.now(), 
+      title,
+      company,
+      status,
+      date,
+      description,
+      logo,
+      userEmail: currentUser.email
+    };
+
+    allJobs.push(newJob);
+    localStorage.setItem('jobs', JSON.stringify(allJobs));
+
+    alert('Job added successfully!');
+    navigate('/home');
+  };
+
   return (
-    <form action="" className={styles['JobContainer']}>
+    <form className={styles['JobContainer']} onSubmit={handleAddJob}>
       <h1 className={styles['add-job-heading']}>Add Job</h1>
 
-     
-        <input 
-          className={styles['job-input']} 
-          type="file" 
-          accept="image/*" 
-          required 
-          placeholder='Choose Image'
-        />
-      
+      <input 
+        className={styles['job-input']} 
+        type="file" 
+        accept="image/*" 
+        onChange={handleImageChange} 
+        required 
+      />
 
       <input  
         className={styles['job-input']} 
         type="text" 
         placeholder="Job Title*" 
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
         required 
       />
 
@@ -27,32 +89,41 @@ export const AddJob = () => {
         className={styles['job-input']} 
         type="text" 
         placeholder="Company Name*" 
+        value={company}
+        onChange={(e) => setCompany(e.target.value)}
         required 
       /> 
-      <br />
 
-      <select name="status" id="status" className={styles.status}>
+      <select 
+        name="status" 
+        id="status" 
+        className={styles.status}
+        value={status}
+        onChange={(e) => setStatus(e.target.value)}
+      >
         <option value="Applied">Applied</option>
         <option value="Rejected">Rejected</option>
         <option value="Interviewed">Interviewed</option>
       </select>
-      <br />
 
       <input 
         className={styles['job-input']} 
         type="date" 
-        placeholder="Date"
+        value={date}
+        onChange={(e) => setDate(e.target.value)}
       />
       
       <input 
         className={styles['job-input']} 
         type="text" 
         placeholder="Brief Job Description"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
       />
 
-      <button className={styles['AddNewJobBtn']}>
+      <button className={styles['AddNewJobBtn']} type="submit">
         Add Job
       </button>
     </form>
-  )
-}
+  );
+};

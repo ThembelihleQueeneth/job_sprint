@@ -1,17 +1,19 @@
 // import React from 'react'
 import { useState } from 'react';
-import { Navbar } from '../components/Navbar/Navbar';
+import { LoginNavBar } from '../components/Navbar/LoginNavBar';
 import styles from '../styles/Landing.module.css';
 import searchIcon from '../assets/search.svg';
-// import companyLogoOne from '../assets/company_logo_1.png'
-// import companyLogoTwo from '../assets/company_logo_2.png'
-// import absa_logo from '../assets/absa.png'
-// import netbank_logo from '../assets/netbank.png'
-import fnb_logo from '../assets/FNB-Logo-New.png';
+import { FaEdit, FaTrash } from "react-icons/fa";
+
+
 import { Footer } from '../components/Footer/Footer';
 
 export const Landing = () => {
   const [searchTerm, setSearchTerm] = useState('');
+
+  const handleDemoBtn = () => {
+    alert('Login/Create Account to use the platform')
+  }
 
   // Sample data for demonstration
   const demoApplications = [
@@ -88,7 +90,7 @@ export const Landing = () => {
 
   return (
     <>
-      <Navbar />
+      <LoginNavBar/>
 
       <div className={styles.content}>
         <div className={styles.textContainer}>
@@ -106,11 +108,13 @@ export const Landing = () => {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <button className={styles.searchButton}>
+          <button className={styles.searchButton} onClick={handleDemoBtn}>
             <img src={searchIcon} alt="Search" />
           </button>
         </div>
       </div>
+
+      <button className={styles.addBtn} onClick={handleDemoBtn}>Add New Job</button>
 
       <h4 className={styles['demo-heading']}>Demo Application</h4>
       <div className={styles["demo-grid"]}>
@@ -126,7 +130,14 @@ export const Landing = () => {
             <span className={`status status-${app.status.toLowerCase()}`}>
               <b>Status:</b> {app.status}
             </span>
-            <button className={styles["detailsBtn"]}>View Details</button>
+             <div className={styles["card-actions"]}>
+            <button onClick={handleDemoBtn} className={styles.iconBtn} id={styles.edit}>
+              <FaEdit />
+            </button>
+            <button onClick={handleDemoBtn} className={styles.iconBtn} id={styles.delete}>
+              <FaTrash />
+          </button>
+            </div>
           </div>
         ))}
       </div>

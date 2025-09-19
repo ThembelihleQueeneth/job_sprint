@@ -4,6 +4,7 @@ import { Login } from './pages/Login'
 import { Register } from './pages/Register'
 import { Home } from './pages/Home'
 import { AddJob } from './pages/AddJob'
+import { EditJob } from './pages/EditJob'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
          <Route path="/home" element= {<Home/>} />
         
          <Route path="/add" element= {<AddJob/>} />
+         <Route path="/edit" element= {<EditJob/>} />
       </Routes>
     </Router>
   )
