@@ -53,7 +53,8 @@ export const Register = () => {
   return (
     <form onSubmit={handleRegister} className={styles['registerContainer']}>
       <h1 className={styles['register-heading']}>Register</h1>
-
+      <label htmlFor="
+        " className={styles['label-form']}>Enter Username:</label>
       <input
         type="text"
         className={styles['register-input']}
@@ -61,7 +62,9 @@ export const Register = () => {
         value={name}
         onChange={(e) => setName(e.target.value)}
         required
-      />
+      /> <br />
+      <label htmlFor="
+        " className={styles['label-form']}>Enter Email:</label>
 
       <input
         className={styles['register-input']}
@@ -70,7 +73,9 @@ export const Register = () => {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
-      />
+      /> <br />
+      <label htmlFor="
+        " className={styles['label-form']}>Enter Password:</label>
 
       <input
         className={styles['register-input']}
@@ -79,8 +84,9 @@ export const Register = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         required
-      />
-
+      /> <br />
+      <label htmlFor="
+        " className={styles['label-form']}>Confirm Password:</label>
       <input
         className={styles['register-input']}
         type="password"

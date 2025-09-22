@@ -40,6 +40,8 @@ const handleLogin = () => {
   return (
     <div className={styles['loginContainer']}>
         <h1 className={styles['login-heading']}>Log in</h1>
+        <label htmlFor="
+        " className={styles['label-form']}>Enter email:</label>
         <input
         className={styles['email-input']}
         type="email"
@@ -47,8 +49,8 @@ const handleLogin = () => {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
-      />
-
+      /> <br />
+        <label htmlFor="" className={styles['label-form']}>Enter password: </label><br />
         <input
         className={styles['pass-input']}
         type="password"

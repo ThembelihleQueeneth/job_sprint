@@ -1,15 +1,23 @@
+*{
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
 .loginContainer{
     width: 500px;
-    height: 500px;
-    border: 1px solid #333;
+    height: 450px;
+    border: none;
+    box-shadow: 0,0,0,9 #3498db;
+    background-color: #f8f8f8;
     margin: auto;
     justify-content: center;
     align-items: center;
     margin-top: 60px;
+    border-radius: 15px;
+    border-top: 6px solid #3498db;
+    border-left: 6px solid #3498db;
     
 }
 .login-heading{
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     text-align: center;
     margin-top: 50px;
     border-bottom: 3px solid #3498db;
@@ -28,6 +36,11 @@
     cursor: pointer;
 
 }
+.email-input{
+  margin-top: px;
+  margin-bottom: 40px;
+}
+
 .register-link{
    margin: 220px;
 }
@@ -48,8 +61,13 @@
   height: 40px;
   margin-left: 135px;
   margin-top: 30px;
+  margin-bottom: 40px;
 }
 
 .loginBtn:hover {
   background: #2980b9;
+}
+.label-form{
+  margin-top: 100px;
+  margin-left: 70px;
 }

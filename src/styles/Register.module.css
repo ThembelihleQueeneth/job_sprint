@@ -1,11 +1,16 @@
 .registerContainer{
     width: 500px;
-    height: 640px;
-    border: 1px solid #333;
+    height: 700px;
+    border: none;
+    border-radius: 15px;
     margin: auto;
     justify-content: center;
     align-items: center;
     margin-top: 60px;
+    border-top: 6px solid #3498db;
+    border-left: 6px solid #3498db;
+    box-shadow: 0,0,0,9 #3498db;
+    background-color: #f8f8f8;
     
 }
 .register-heading{
@@ -26,7 +31,12 @@
     border-radius: 10px;
     font-size: 12px;
     cursor: pointer;
+    margin-bottom: 20px;
 
+}
+.label-form{
+  margin-top: 100px;
+  margin-left: 70px;
 }
 
 .account{
@@ -46,6 +56,7 @@
   height: 40px;
   margin-left: 135px;
   margin-top: 30px;
+  margin-bottom: 0.5px;
 }
 
 .registerBtn:hover {

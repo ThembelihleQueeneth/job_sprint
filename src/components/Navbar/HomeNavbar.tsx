@@ -17,7 +17,7 @@ export const HomeNavBar = ({ name }: HomeNavBarProps) => {
         </div>
         <div>
           <Link to="/">
-            <button className={styles.login} onClick={handleLogoutBtn}>Logout</button>
+            <button title='ff' className={styles.login} onClick={handleLogoutBtn}>Logout</button>
           </Link>
             
         </div>
