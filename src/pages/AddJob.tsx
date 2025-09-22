@@ -68,6 +68,8 @@ export const AddJob = () => {
     <form className={styles['JobContainer']} onSubmit={handleAddJob}>
       <h1 className={styles['add-job-heading']}>Add Job</h1>
 
+      <label htmlFor="
+        " className={styles['label-form']}>Upload Company Logo:</label>
       <input 
         className={styles['job-input']} 
         type="file" 
@@ -75,7 +77,9 @@ export const AddJob = () => {
         onChange={handleImageChange} 
         required 
         aria-label="State"
-      />
+      /> <br />
+      <label htmlFor="
+        " className={styles['label-form']}>Enter Job Title:</label>
 
       <input  
         className={styles['job-input']} 
@@ -84,7 +88,10 @@ export const AddJob = () => {
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         required 
-      />
+      /> <br />
+
+      <label htmlFor="
+        " className={styles['label-form']}>Enter Company Name:</label>
 
       <input  
         className={styles['job-input']} 
@@ -93,7 +100,9 @@ export const AddJob = () => {
         value={company}
         onChange={(e) => setCompany(e.target.value)}
         required 
-      /> 
+      /> <br />
+      <label htmlFor="
+        " className={styles['label-form']}>Choose Status:</label>
 
       <select 
         name="status" 
@@ -106,7 +115,10 @@ export const AddJob = () => {
         <option value="Applied">Applied</option>
         <option value="Rejected">Rejected</option>
         <option value="Interviewed">Interviewed</option>
-      </select>
+      </select> <br />
+
+      <label htmlFor="
+        " className={styles['label-form']}>Enter Date:</label>
 
       <input 
         className={styles['job-input']} 
@@ -114,7 +126,9 @@ export const AddJob = () => {
         value={date}
         onChange={(e) => setDate(e.target.value)}
         aria-label="State"
-      />
+      /> <br />
+      <label htmlFor="
+        " className={styles['label-form']}>Provide a Brief Description:</label>
       
       <input 
         className={styles['job-input']} 
