@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../styles/EditJob.module.css';
 import { useNavigate, useParams } from 'react-router-dom';
-import { BiBorderRadius } from 'react-icons/bi';
 
 type Job = {
   id: number;
@@ -93,6 +92,7 @@ export const EditJob = () => {
         type="file" 
         accept="image/*" 
         onChange={handleImageChange} 
+        aria-label="Job Image"
       />
 
       
@@ -131,10 +131,12 @@ export const EditJob = () => {
       </select>
 
       <input 
+      
         className={styles['job-input']} 
         type="date" 
         value={date}
         onChange={(e) => setDate(e.target.value)}
+        aria-label="Job Date"
       />
       
       <input 
