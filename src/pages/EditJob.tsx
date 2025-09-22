@@ -87,13 +87,19 @@ export const EditJob = () => {
 
       {logo && <img src={logo} alt="Company Logo" className={styles.logo} />}
 
+      <br />
+       <label htmlFor="
+        " className={styles['label-form']}>Upload Company Logo:</label>
       <input 
         className={styles['job-input']} 
         type="file" 
         accept="image/*" 
         onChange={handleImageChange} 
         aria-label="Job Image"
-      />
+      /> <br />
+       <label htmlFor="
+        " className={styles['label-form']}>Enter Job Title:</label>
+
 
       
 
@@ -104,7 +110,9 @@ export const EditJob = () => {
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         required 
-      />
+      /> <br />
+       <label htmlFor="
+        " className={styles['label-form']}>Enter Company Name:</label>
 
       <input  
         className={styles['job-input']} 
@@ -113,7 +121,9 @@ export const EditJob = () => {
         value={company}
         onChange={(e) => setCompany(e.target.value)}
         required 
-      /> 
+      /> <br />
+      <label htmlFor="
+        " className={styles['label-form']}>Choose Status:</label>
 
       <select 
         name="status" 
@@ -128,7 +138,10 @@ export const EditJob = () => {
         <option value="Applied">Applied</option>
         <option value="Rejected">Rejected</option>
         <option value="Interviewed">Interviewed</option>
-      </select>
+      </select> <br />
+      <label htmlFor="
+        " className={styles['label-form']}>Enter Date:</label>
+
 
       <input 
       
@@ -137,7 +150,10 @@ export const EditJob = () => {
         value={date}
         onChange={(e) => setDate(e.target.value)}
         aria-label="Job Date"
-      />
+      /> <br />
+      <label htmlFor="
+        " className={styles['label-form']}>Provide a Brief Description:</label>
+      
       
       <input 
         className={styles['job-input']} 

@@ -109,6 +109,9 @@ input:hover{
 .status-rejected {
   color: #e74c3c;
 }
+.text-icon{
+  font-size: 18px;
+}
 
 .addBtn {
   background: #3498db;

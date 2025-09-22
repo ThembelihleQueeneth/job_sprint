@@ -18,6 +18,8 @@ type Job = {
   description: string
 };
 
+
+
 export const Home = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [jobs, setJobs] = useState<Job[]>([]);
@@ -123,12 +125,15 @@ const closeModal = () => {
               
               <div className={styles["card-actions"]}>
                 <button onClick={() => handleEditBtn(job.id)} className={styles.iconBtn} id={styles.edit}>
-                  <FaEdit />
+                  <FaEdit /><br /><span className={styles['text-icon']}>Edit</span>
                 </button>
                 <button onClick={() => handleDeleteBtn(job.id)} className={styles.iconBtn} id={styles.delete}>
-                  <FaTrash />
+                  <FaTrash /><br /><span className={styles['text-icon']}>Delete</span>
                 </button>
-                <button onClick={() => handleViewBtn(job.id)} className={styles.iconBtn} id={styles.view}><FaEye /></button>
+                <button onClick={() => handleViewBtn(job.id)} className={styles.iconBtn} id={styles.view}><FaEye />
+                <br /><span className={styles['text-icon']}>View</span>
+                </button>
+                
               </div>
             </div>
           ))

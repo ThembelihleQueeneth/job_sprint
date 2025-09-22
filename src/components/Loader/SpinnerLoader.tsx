@@ -6,6 +6,7 @@ export const SpinnerLoader = () => {
   return (
     <div className="spinner-container">
       <img src={spinner} alt="Loading..." className="spinner" />
+      <p>Loading... Please wait</p>
     </div>
   )
 }
