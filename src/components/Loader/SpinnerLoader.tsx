@@ -1,4 +1,3 @@
-import React from 'react'
 import '../../styles/Spinner.css'
 import spinner from '../../assets/arrows-spin-solid-full.svg'
 

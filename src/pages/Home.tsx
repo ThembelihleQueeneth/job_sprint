@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
-import { Navbar } from '../components/Navbar/Navbar';
-import { HomeNavBar } from '../components/Navbar/HomeNavBar';
+import { HomeNavBar } from '../components/Navbar/HomeNavbar';
 import styles from '../styles/Home.module.css'
 import searchIcon from '../assets/search.svg';
 import { Footer } from '../components/Footer/Footer';
 import { useNavigate } from 'react-router-dom';
 import { FaEdit, FaTrash, FaEye,  FaWindowClose } from "react-icons/fa";
+import { useEffect, useState } from 'react';
+import { Navbar } from '../components/Navbar/Navbar';
 
 type Job = {
   id: number;
