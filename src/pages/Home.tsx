@@ -3,7 +3,7 @@ import styles from '../styles/Home.module.css'
 import searchIcon from '../assets/search.svg';
 import { Footer } from '../components/Footer/Footer';
 import { useNavigate } from 'react-router-dom';
-import { FaEdit, FaTrash, FaEye,  FaWindowClose } from "react-icons/fa";
+import { FaEdit, FaTrash, FaEye, FaWindowClose } from "react-icons/fa";
 import { useEffect, useState } from 'react';
 import { Navbar } from '../components/Navbar/Navbar';
 
@@ -13,23 +13,25 @@ type Job = {
   company: string;
   status: string;
   logo: string;
-  userEmail: string; 
+  userEmail: string;
   date: string;
-  description: string
+  description: string;
 };
-
-
 
 export const Home = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [jobs, setJobs] = useState<Job[]>([]);
-  const navigate = useNavigate();
+  const [selectedJob, setSelectedJob] = useState<Job | null>(null);
+  const [showModal, setShowModal] = useState(false);
 
- 
+  // Delete modal state
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [jobToDelete, setJobToDelete] = useState<Job | null>(null);
+
+  const navigate = useNavigate();
   const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
-  
+
   useEffect(() => {
-   
     const allJobs: Job[] = JSON.parse(localStorage.getItem('jobs') || '[]');
     const userJobs = allJobs.filter(job => job.userEmail === currentUser.email);
     setJobs(userJobs);
@@ -43,33 +45,45 @@ export const Home = () => {
     navigate(`/edit/${jobId}`);
   };
 
+  // Instead of deleting immediately, open confirmation modal
   const handleDeleteBtn = (jobId: number) => {
-  const confirmed = window.confirm('Are you sure you want to delete this job?');
-  if (!confirmed) return;
+    const job = jobs.find((j) => j.id === jobId);
+    if (job) {
+      setJobToDelete(job);
+      setShowDeleteModal(true);
+    }
+  };
 
-  const allJobs: Job[] = JSON.parse(localStorage.getItem('jobs') || '[]');
-  const updatedJobs = allJobs.filter(job => job.id !== jobId);
-  localStorage.setItem('jobs', JSON.stringify(updatedJobs));
-  setJobs(updatedJobs.filter(job => job.userEmail === currentUser.email));
-};
+  // Confirm delete
+  const confirmDelete = () => {
+    if (!jobToDelete) return;
 
-const [selectedJob, setSelectedJob] = useState<Job | null>(null);
-const [showModal, setShowModal] = useState(false);
+    const allJobs: Job[] = JSON.parse(localStorage.getItem('jobs') || '[]');
+    const updatedJobs = allJobs.filter(job => job.id !== jobToDelete.id);
+    localStorage.setItem('jobs', JSON.stringify(updatedJobs));
+    setJobs(updatedJobs.filter(job => job.userEmail === currentUser.email));
 
-const handleViewBtn = (jobId: number) => {
-  const job = jobs.find((j) => j.id === jobId);
-  if (job) {
-    setSelectedJob(job);
-    setShowModal(true);
-  }
-};
+    setShowDeleteModal(false);
+    setJobToDelete(null);
+  };
 
-const closeModal = () => {
-  setShowModal(false);
-  setSelectedJob(null);
-};
+  const cancelDelete = () => {
+    setShowDeleteModal(false);
+    setJobToDelete(null);
+  };
 
+  const handleViewBtn = (jobId: number) => {
+    const job = jobs.find((j) => j.id === jobId);
+    if (job) {
+      setSelectedJob(job);
+      setShowModal(true);
+    }
+  };
 
+  const closeModal = () => {
+    setShowModal(false);
+    setSelectedJob(null);
+  };
 
   const filteredJobs = jobs.filter(
     (job) =>
@@ -82,11 +96,8 @@ const closeModal = () => {
       <Navbar />
       <HomeNavBar name={currentUser.name || 'User'} />
 
-
-
       <div className={styles.content}>
         <div className={styles.textContainer}>
-          
           <h2>Keep Track of Your Job Applications</h2>
           <p>Stay organized and never miss an opportunity with our job application tracker.</p>
         </div>
@@ -106,7 +117,6 @@ const closeModal = () => {
 
       <button className={styles.addBtn} onClick={handleAddBtn}>Add New Job</button>
 
-
       <h4 className={styles['demo-heading']}>Recent Applications</h4>
 
       <div className={styles["demo-grid"]}>
@@ -118,11 +128,11 @@ const closeModal = () => {
               <img src={job.logo} alt="Company Logo" className={styles["company-logo"]} />
               <h3 className={styles["job-title"]}><b>Title:</b> {job.title}</h3>
               <span className={styles["company-name"]}><b>Company:</b> {job.company}</span>
-             <span
-                className={`${styles.status} ${styles[`status-${job.status.toLowerCase()}`]}`}> <b>Status:</b> {job.status}
+              <span
+                className={`${styles.status} ${styles[`status-${job.status.toLowerCase()}`]}`}>
+                <b>Status:</b> {job.status}
               </span>
 
-              
               <div className={styles["card-actions"]}>
                 <button onClick={() => handleEditBtn(job.id)} className={styles.iconBtn} id={styles.edit}>
                   <FaEdit /><br /><span className={styles['text-icon']}>Edit</span>
@@ -130,36 +140,50 @@ const closeModal = () => {
                 <button onClick={() => handleDeleteBtn(job.id)} className={styles.iconBtn} id={styles.delete}>
                   <FaTrash /><br /><span className={styles['text-icon']}>Delete</span>
                 </button>
-                <button onClick={() => handleViewBtn(job.id)} className={styles.iconBtn} id={styles.view}><FaEye />
-                <br /><span className={styles['text-icon']}>View</span>
+                <button onClick={() => handleViewBtn(job.id)} className={styles.iconBtn} id={styles.view}>
+                  <FaEye /><br /><span className={styles['text-icon']}>View</span>
                 </button>
-                
               </div>
             </div>
           ))
         )}
       </div>
+
+      {/* View Job Modal */}
       {showModal && selectedJob && (
-  <div className={styles.modalBackdrop}>
-    <div className={styles.modal}>
-      <h2>{selectedJob.title}</h2>
-      <img src={selectedJob.logo} alt="Company Logo" className={styles["company-logo"]} />
-      <p><b>Job ID:</b> {selectedJob.id}</p>
-      <p><b>Company:</b> {selectedJob.company}</p>
-      <p><b>Job Title</b>{selectedJob.title}</p>
-      <p><b>Status:</b> {selectedJob.status}</p>
-      <p><b>Date Applied:</b>{selectedJob.date}</p>
-      <p><b>Description:</b> {selectedJob.description}</p>
-      <p><b>Added by:</b> {selectedJob.userEmail}</p>
-      
+        <div className={styles.modalBackdrop}>
+          <div className={styles.modal}>
+            <h2>{selectedJob.title}</h2>
+            <img src={selectedJob.logo} alt="Company Logo" className={styles["company-logo"]} />
+            <p><b>Job ID:</b> {selectedJob.id}</p>
+            <p><b>Company:</b> {selectedJob.company}</p>
+            <p><b>Job Title:</b> {selectedJob.title}</p>
+            <p><b>Status:</b> {selectedJob.status}</p>
+            <p><b>Date Applied:</b> {selectedJob.date}</p>
+            <p><b>Description:</b> {selectedJob.description}</p>
+            <p><b>Added by:</b> {selectedJob.userEmail}</p>
 
-      <div className={styles.modalActions}>
-        <button onClick={closeModal} className={styles.closeBtn}><FaWindowClose/></button>
-      </div>
-    </div>
-  </div>
-)}
+            <div className={styles.modalActions}>
+              <button onClick={closeModal} className={styles.closeBtn}><FaWindowClose /></button>
+            </div>
+          </div>
+        </div>
+      )}
 
+      {/* Delete Confirmation Modal */}
+      {showDeleteModal && jobToDelete && (
+        <div className={styles.modalBackdrop}>
+          <div className={styles.modal}>
+            <h2>Confirm Delete</h2>
+            <p>Are you sure you want to delete <b>{jobToDelete.title}</b> at <b>{jobToDelete.company}</b>?</p>
+            <div className={styles.modalActions}>
+              
+              <button onClick={cancelDelete} className={styles.closeDeleteBtn}>Cancel</button>
+              <button onClick={confirmDelete} className={styles.deleteBtn}>Delete</button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <Footer />
     </>
